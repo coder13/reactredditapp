@@ -30,8 +30,10 @@ module.exports = Router.extend({
 	},
 
 	index () {
-		console.log('asd');
-		this.renderPage(<IndexPage/>, document.body);
+		var name = ''
+		var sub = new Subreddit({subUrl: name});
+		sub.fetch();
+		this.renderPage(<SubredditPage sub={sub} hasSidebar={false}/>, document.body);
 	},
 
 	login () {
@@ -47,7 +49,7 @@ module.exports = Router.extend({
 		console.log(name);
 		var sub = new Subreddit({subUrl: name});
 		sub.fetch();
-		this.renderPage(<SubredditPage sub={sub}/>, document.body);
+		this.renderPage(<SubredditPage sub={sub} hasSidebar={true}/>, document.body);
 	},
 
 	user () {

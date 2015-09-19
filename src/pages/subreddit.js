@@ -8,12 +8,6 @@ var Post = require('../components/post.js');
 module.exports = React.createClass({
 	mixins: [ampersandReactMixin],
 
-	getInitialState () {
-		return {
-			hasSidebar: true
-		};
-	},
-
 	componentWillMount () {
 		this.props.sub.posts.on('all', function (name, event) {
 			this.forceUpdate();	
@@ -28,14 +22,16 @@ module.exports = React.createClass({
 				return <Post key={index} model={post}/>
 			}
 		});
+		var sidebar = this.props.hasSidebar
 		return (
 			<View row auto>
-				<View column width='74%' style={{marginLeft: '.5%', marginRight: '.5%'}}>
+				<View column width={sidebar ? '74%' : '99%'} style={{marginLeft: '.5%', marginRight: '.5%'}}>
 				{posts}
 				</View>
-				<View column width='24%' style={{marginLeft: '.5%', marginRight: '.5%'}}>
-					{this.state.hasSidebar ? <Sidebar about={this.props.sub.about}/> : ''}
-				</View>
+				{sidebar ?
+					(<View column width='24%' style={{marginLeft: '.5%', marginRight: '.5%'}}>
+						<Sidebar about={this.props.sub.about}/> : ''}
+					</View>) : ''} 
 			</View>
 		); 
 	}

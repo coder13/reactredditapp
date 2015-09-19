@@ -50,7 +50,7 @@ module.exports = React.createClass({
 		var ago = fromNow(created_utc*1000)
 		console.log(this.props.model);
 		return (
-			<Card className='post' level={1}>
+			<Card className='post' level={1} onOver={c => c.setLevel(2)} onOut={c => c.setLevel(1)}>
 				<p className='title'><span>{title}</span> (<a href={`https://${window.domain}/domain/${domain}`}>{domain}</a>)</p>
 				<p>submitted <span className='time'>{ago.toString()}</span> ago by <span className='author'>{author}</span></p>
 			</Card>
