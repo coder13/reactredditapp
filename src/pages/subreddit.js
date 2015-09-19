@@ -1,12 +1,16 @@
+var App = require('ampersand-app');
 var React = require('react');
-var app = require('ampersand-app');
+var View = require('react-flexbox');
 var ampersandReactMixin = require('ampersand-react-mixin');
+var Sidebar = require('../components/sidebar.js');
 
 module.exports = React.createClass({
 	mixins: [ampersandReactMixin],
 
 	getInitialState () {
-		return {};
+		return {
+			hasSidebar: true
+		};
 	},
 
 	componentWillMount () {
@@ -19,11 +23,15 @@ module.exports = React.createClass({
 	},
 
 	render: function () {
-		console.log(this.props.sub.about.id);
 		return (
-			<div>
-				{this.props.sub.about.id}
-			</div>
+			<View row auto>
+				<View>
+					<p>Main</p>
+				</View>
+				<View column width='25%'>
+					{this.state.hasSidebar ? <Sidebar description={this.props.sub.about.description}/> : ''}
+				</View>
+			</View>
 		); 
 	}
 });
