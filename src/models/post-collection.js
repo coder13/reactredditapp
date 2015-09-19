@@ -1,11 +1,16 @@
 var _ = require('lodash');
-var Model = require('ampersand-model');
+var Collection = require('ampersand-rest-collection');
 var Post = require('./post.js');
 
-module.exports = Model.extend({
-	Model: 'Post',
+module.exports = Collection.extend({
+	model: Post,
 
-	initializer () {
+	parse (data) {
+		this.reset();
+		this.add(_.pluck(data.data.children, 'data'));
+	},
+
+	url () {
+		return `https://api.reddit.com/${this.parent.subUrl}?raw_json=1`;
 	}
-
 });

@@ -4,20 +4,14 @@ var About = require('./about.js');
 var Posts = require('./post-collection.js');
 
 module.exports = Model.extend({
-	// url () {
-	// 	return `https://api.reddit.com/${this.subUrl}/about?raw_json=1`;
-	// },
-
 	props: {
 		subUrl: 'string',
-		about: 'About'
+		about: About
 	},
-
-	// parse (data) {
-	// 	console.log(13, data.data);
-	// 	this.set(data.data);
-	// 	console.log(16, this);
-	// },
+	
+	children: {
+		posts: Posts
+	},
 
 	fetch () {
 		console.log('fetch', this.subUrl);
@@ -26,6 +20,9 @@ module.exports = Model.extend({
 			this.about.on('all', this.trigger, this);
 		}
 		this.about.fetch();
+		this.posts.on('all', this.trigger, this);
+		this.posts.fetch({add: true, remove: false});
+
 	},
 
 	initialize () {

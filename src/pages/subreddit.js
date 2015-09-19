@@ -3,6 +3,7 @@ var React = require('react');
 var View = require('react-flexbox');
 var ampersandReactMixin = require('ampersand-react-mixin');
 var Sidebar = require('../components/sidebar.js');
+var Post = require('../components/post.js');
 
 module.exports = React.createClass({
 	mixins: [ampersandReactMixin],
@@ -14,20 +15,21 @@ module.exports = React.createClass({
 	},
 
 	componentWillMount () {
-		this.props.sub.on('all', function (name, event) {
-			console.log(name, event);
-			this.forceUpdate();
+		this.props.sub.posts.on('all', function (name, event) {
+			this.forceUpdate();	
 		}, this);
 
 		console.log(this.props);
 	},
 
 	render: function () {
-		console.log(...this.props.sub.about);
+		var posts = this.props.sub.posts.map(function (post, index) {
+			return <Post key={index} model={post}/>
+		});
 		return (
 			<View row auto>
 				<View column width='75%'>
-					<p></p>
+				{posts}
 				</View>
 				<View column width='25%'>
 					{this.state.hasSidebar ? <Sidebar about={this.props.sub.about}/> : ''}
