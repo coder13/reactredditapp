@@ -2,11 +2,11 @@ var Model = require('ampersand-model');
 
 module.exports = Model.extend({
 	url () {
-		return `https://api.reddit.com/${this.url}?raw_json=1`;
+		return `https://api.reddit.com/${this.postUrl}?raw_json=1`;
 	},
 
 	props: {
-		url: 'string'
+		postUrl: 'string'
 	},
 
 	parse (data) {

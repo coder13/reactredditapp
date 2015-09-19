@@ -1,6 +1,7 @@
 var App = require('ampersand-app');
 var Router = require('ampersand-router');
 var React = require('react');
+var qs = require('qs');
 var Subreddit = require('./models/subreddit.js');
 var Layout = require('./pages/layout.js');
 var IndexPage = require('./pages/index.js');
@@ -31,6 +32,14 @@ module.exports = Router.extend({
 	index () {
 		console.log('asd');
 		this.renderPage(<IndexPage/>, document.body);
+	},
+
+	login () {
+		window.location = 'https://oauth.reddit.com?' + qs.stringify({
+			client_id: App.CLIENT_ID,
+			redirect_uri: window.location.origin,
+			scope: '*'
+		})
 	},
 
 	subreddit (name) {

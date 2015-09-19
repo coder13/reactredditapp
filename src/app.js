@@ -16,6 +16,8 @@ if (typeof window !== 'undefined') {
 
 var app = window.app = App.extend({
 	init: function () {
+		this.CLIENT_ID = 'ubS2T6_L9F1iCQ';
+
 		this.me = new Me();
 		this.router = new Router();
 		this.router.history.start();

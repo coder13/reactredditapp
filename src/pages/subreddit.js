@@ -19,9 +19,10 @@ module.exports = React.createClass({
 	},
 
 	render: function () {
+		console.log(this.props.sub.about.id);
 		return (
 			<div>
-				Hello World
+				{this.props.sub.about.id}
 			</div>
 		); 
 	}

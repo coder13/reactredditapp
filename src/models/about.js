@@ -44,12 +44,8 @@ module.exports = Model.extend({
 	},
 
 	parse (data) {
+		console.log('parsing', this.url())
 		this.set(data.data);
-	},
-
-	initializer () {
-		
-
 	}
 
 });

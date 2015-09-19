@@ -9,10 +9,11 @@ module.exports = React.createClass({
 		return (
 			<nav id='header' className='top-nav top-nav-light cf' role='navigation'>
 				<input id='menu-toggle' className='menu-toggle' type='checkbox'/>
-				<label for='menu-toggle'>Menu</label>
+				<label htmlFor='menu-toggle'>Menu</label>
 				
 				<ul className='list-unstyled list-inline cf'>
 					<li><a>Front Page</a></li>
+					<li style={{float: 'right'}}><a href='/login'>login</a></li>
 				</ul>
 			</nav>
 		)
