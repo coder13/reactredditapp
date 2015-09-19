@@ -24,14 +24,16 @@ module.exports = React.createClass({
 
 	render: function () {
 		var posts = this.props.sub.posts.map(function (post, index) {
-			return <Post key={index} model={post}/>
+			if (post.title) {
+				return <Post key={index} model={post}/>
+			}
 		});
 		return (
 			<View row auto>
-				<View column width='75%'>
+				<View column width='74%' style={{marginLeft: '.5%', marginRight: '.5%'}}>
 				{posts}
 				</View>
-				<View column width='25%'>
+				<View column width='24%' style={{marginLeft: '.5%', marginRight: '.5%'}}>
 					{this.state.hasSidebar ? <Sidebar about={this.props.sub.about}/> : ''}
 				</View>
 			</View>

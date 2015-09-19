@@ -7,6 +7,7 @@ module.exports = Collection.extend({
 
 	parse (data) {
 		this.reset();
+		console.log(10, data.data.children[0]);
 		this.add(_.pluck(data.data.children, 'data'));
 	},
 
