@@ -3,14 +3,17 @@ var Markdown = require('react-remarkable');
 
 module.exports = React.createClass({
 	style: {
-		fontSize: '6px'
+		fontSize: '12px'
 	},
 
 	render () {
-		console.log(7, this.props);
 		return (
 			<div>
-				<Markdown style={this.style} source={this.props.description}/>
+				<h1>{this.props.about.subUrl}</h1>
+				<p>{this.props.about.title}</p>
+				<p>{this.props.about.subscribers} subscribers</p>
+				<hr/>
+				<div id='markdown'><Markdown>{this.props.about.description}</Markdown></div>
 			</div>
 		)
 	}

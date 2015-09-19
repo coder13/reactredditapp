@@ -23,13 +23,14 @@ module.exports = React.createClass({
 	},
 
 	render: function () {
+		console.log(...this.props.sub.about);
 		return (
 			<View row auto>
-				<View>
-					<p>Main</p>
+				<View column width='75%'>
+					<p></p>
 				</View>
 				<View column width='25%'>
-					{this.state.hasSidebar ? <Sidebar description={this.props.sub.about.description}/> : ''}
+					{this.state.hasSidebar ? <Sidebar about={this.props.sub.about}/> : ''}
 				</View>
 			</View>
 		); 
