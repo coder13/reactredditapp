@@ -25,8 +25,8 @@ module.exports = React.createClass({
 		var sidebar = this.props.hasSidebar
 		return (
 			<View row auto>
-				<View column width={sidebar ? '74%' : '99%'} style={{marginLeft: '.5%', marginRight: '.5%'}}>
-				{posts}
+				<View column width={sidebar ? '74%' : '99%'}>
+					<div className='posts'>{posts}</div>
 				</View>
 				{sidebar ?
 					(<View column width='24%' style={{marginLeft: '.5%', marginRight: '.5%'}}>

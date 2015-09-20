@@ -12,7 +12,6 @@ module.exports = React.createClass({
 				<label htmlFor='menu-toggle'>Menu</label>
 				
 				<ul className='list-unstyled list-inline cf'>
-					<li><a>Front Page</a></li>
 					<li style={{float: 'right'}}><a href='/login'>login</a></li>
 				</ul>
 			</nav>

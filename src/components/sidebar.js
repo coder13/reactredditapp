@@ -9,7 +9,7 @@ module.exports = React.createClass({
 				<p>{this.props.about.title}</p>
 				<p>{this.props.about.subscribers} subscribers</p>
 				<hr/>
-				<div id='markdown'><Markdown>{this.props.about.description}</Markdown></div>
+				<div className='markdown'><Markdown>{this.props.about.description}</Markdown></div>
 			</div>
 		)
 	}
